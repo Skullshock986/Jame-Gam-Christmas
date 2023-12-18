@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ci4ab8xnw1dxt"]
+
+[ext_resource type="Script" path="res://Players/player.gd" id="1_66dkk"]
+[ext_resource type="Texture2D" uid="uid://2lysimcut03x" path="res://Art/ColdValleys-FullVersion/Sprites/Characters/Players/Player-32x32.png" id="1_m5g30"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dct6a"]
+size = Vector2(9, 13)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_66dkk")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture = ExtResource("1_m5g30")
+hframes = 6
+vframes = 7
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 3.5)
+shape = SubResource("RectangleShape2D_dct6a")
