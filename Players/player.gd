@@ -8,6 +8,7 @@ const JUMP_VELOCITY = -400.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var animation_tree = $AnimationTree
+@onready var animation_player = $AnimationPlayer
 @onready var state_machine = animation_tree.get("parameters/playback")
 
 @export var starting_direction = 1
@@ -27,6 +28,12 @@ func _physics_process(delta):
 	# Change between idle and walk animation
 	pick_new_state()
 	
+	#Check if attack
+	var attack = Input.get_action_strength("attack")
+	if attack and state_machine.get_current_node() != "Attack":
+		state_machine.travel("Attack")
+		
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("left", "right")
@@ -44,6 +51,7 @@ func update_animation_parameters(move_input : float):
 		animation_tree.set("parameters/Walk/blend_position", move_input)
 		animation_tree.set("parameters/Falling/blend_position", move_input)
 		animation_tree.set("parameters/Rising/blend_position", move_input)
+		animation_tree.set("parameters/Attack/blend_position", move_input)
 
 func pick_new_state():
 	if (velocity.y == 0):
@@ -52,9 +60,7 @@ func pick_new_state():
 		else:
 			state_machine.travel("Walk")
 	else:
-		if (velocity.y > 0):
+		if (velocity.y < 0):
 			state_machine.travel("Rising")
 		else:
 			state_machine.travel("Falling")
-
-
