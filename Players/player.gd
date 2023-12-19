@@ -42,11 +42,19 @@ func update_animation_parameters(move_input : float):
 	if (move_input != 0):
 		animation_tree.set("parameters/Idle/blend_position", move_input)
 		animation_tree.set("parameters/Walk/blend_position", move_input)
+		animation_tree.set("parameters/Falling/blend_position", move_input)
+		animation_tree.set("parameters/Rising/blend_position", move_input)
 
 func pick_new_state():
-	if (velocity.x == 0):
-		state_machine.travel("Idle")
+	if (velocity.y == 0):
+		if (velocity.x == 0):
+			state_machine.travel("Idle")
+		else:
+			state_machine.travel("Walk")
 	else:
-		state_machine.travel("Walk")
+		if (velocity.y > 0):
+			state_machine.travel("Rising")
+		else:
+			state_machine.travel("Falling")
 
 
