@@ -11,7 +11,7 @@ var idle_time : float
 
 func randomise_wander():
 	move_direction = (randi() % 2) * 2 - 1
-	wander_time = randf_range(1, 3)
+	wander_time = randf_range(2, 4)
 	idle_time = randf_range(3, 5)
 	
 func Enter():
@@ -31,6 +31,8 @@ func Update(delta : float):
 func Physics_Update(delta : float):
 	if enemy and wander_time > 0:
 		enemy.velocity.x = move_direction * move_speed
+	else:
+		enemy.velocity.x = 0
 		
 	var distance = player.global_position.x - enemy.global_position.x
 	
