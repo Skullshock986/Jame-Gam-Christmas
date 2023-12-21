@@ -64,3 +64,7 @@ func pick_new_state():
 			state_machine.travel("Rising")
 		else:
 			state_machine.travel("Falling")
+
+
+func _on_area_2d_body_entered(body):
+	get_tree().reload_current_scene()
