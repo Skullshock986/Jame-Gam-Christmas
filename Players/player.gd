@@ -13,6 +13,11 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @export var starting_direction = 1
 
+var near_door = false
+@onready var near_return = false
+@onready var near_next = false
+var current_level : int = 1
+
 func _ready():
 	update_animation_parameters(starting_direction)
 
@@ -45,6 +50,18 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+func _process(delta):
+	if near_door:
+		if Input.is_action_just_pressed("interact"):
+			get_tree().change_scene_to_file("res://Scenes/level_" + str(current_level) + ".tscn")
+	if near_next:
+		if Input.is_action_just_pressed("interact"):
+			update_level()
+			get_tree().change_scene_to_file("res://Scenes/level_" + str(current_level) + ".tscn")
+	if near_return:
+		if Input.is_action_just_pressed("interact"):
+			get_tree().change_scene_to_file("res://Scenes/home.tscn")
+
 func update_animation_parameters(move_input : float):
 	if (move_input != 0):
 		animation_tree.set("parameters/Idle/blend_position", move_input)
@@ -65,7 +82,30 @@ func pick_new_state():
 		else:
 			state_machine.travel("Falling")
 
+func update_level():
+	current_level += 1
+
+func get_current_level():
+	return current_level
 
 func _on_area_2d_body_entered(body):
 	if body is player:
 		get_tree().reload_current_scene()
+
+func _on_exit_home_body_entered(body):
+	near_door = true
+
+func _on_exit_home_body_exited(body):
+	near_door = false
+
+func _on_return_home_area_body_entered(body):
+	near_return = true
+
+func _on_return_home_area_body_exited(body):
+	near_return = false
+
+func _on_next_level_area_body_entered(body):
+	near_next = true
+
+func _on_next_level_area_body_exited(body):
+	near_next = false

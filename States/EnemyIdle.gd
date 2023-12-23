@@ -41,7 +41,7 @@ func Physics_Update(delta : float):
 	if abs(distance) < 70:
 		Transitioned.emit(self, "follow")
 
-func Flip_Direction():
+func flip_direction():
 	if flip_time <= 0:
 		move_direction = -move_direction
 		flip_time = 1

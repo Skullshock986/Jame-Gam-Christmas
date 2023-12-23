@@ -7,6 +7,9 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	
+	if not $RayCast2D.is_colliding() or not $RayCast2D2.is_colliding():
+		$"State Machine/Idle".flip_direction()
+	
 	if abs(velocity.x) > 50:
 		$AnimationPlayer.play("run")
 	elif abs(velocity.x) > 0:

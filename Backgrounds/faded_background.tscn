@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtpsickw6vdms"]
+
+[ext_resource type="Texture2D" uid="uid://coisf6gnlakti" path="res://Art/ColdValleys-FullVersion/Sprites/World/ParallaxBackground/FadedParallaxBackground/Sky-560x500.png" id="1_goao6"]
+[ext_resource type="Texture2D" uid="uid://2ytxg06aake6" path="res://Art/ColdValleys-FullVersion/Sprites/World/ParallaxBackground/FadedParallaxBackground/FadedBackwardMountains-560x500.png" id="2_7e61k"]
+[ext_resource type="Texture2D" uid="uid://cn7v8q4po6c3v" path="res://Art/ColdValleys-FullVersion/Sprites/World/ParallaxBackground/FadedParallaxBackground/FadedFrontMountains-560x500.png" id="3_nc4gl"]
+[ext_resource type="Texture2D" uid="uid://bj00tw88kdjos" path="res://Art/ColdValleys-FullVersion/Sprites/World/ParallaxBackground/FadedParallaxBackground/FadedHills_Trees-560x500.png" id="4_2b3lj"]
+[ext_resource type="Texture2D" uid="uid://csm2nkhrjg6xu" path="res://Art/ColdValleys-FullVersion/Sprites/World/ParallaxBackground/FadedParallaxBackground/FadedStars-560x500.png" id="5_jboqn"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+position = Vector2(41, -49)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+texture = ExtResource("1_goao6")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="."]
+position = Vector2(41, -49)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer5"]
+texture = ExtResource("2_7e61k")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+position = Vector2(41, -49)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
+texture = ExtResource("3_nc4gl")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+position = Vector2(41, -49)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer3"]
+texture = ExtResource("4_2b3lj")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="."]
+position = Vector2(41, -49)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer4"]
+texture = ExtResource("5_jboqn")
