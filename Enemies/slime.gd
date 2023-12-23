@@ -22,4 +22,9 @@ func _physics_process(delta):
 	else:
 		$Sprite2D.flip_h = true
 	
+	if not $Direction/FloorCheck.is_colliding():
+		$"State Machine/Idle".Flip_Direction()
+		$Direction.scale.x = -$Direction.scale.x
+		
 	move_and_slide()
+
