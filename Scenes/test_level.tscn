@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqhspjppopwki"]
+[gd_scene load_steps=6 format=3 uid="uid://dbxtm22p8rhfu"]
 
 [ext_resource type="Texture2D" uid="uid://3xfd6uqps7lt" path="res://Art/ColdValleys-FullVersion/Sprites/World/Ground-24x24.png" id="1_xf6si"]
 [ext_resource type="PackedScene" uid="uid://ci4ab8xnw1dxt" path="res://Players/santa.tscn" id="2_fboi4"]
@@ -995,18 +995,21 @@ physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_1dgwm")
 
 [node name="TestLevel" type="Node2D"]
+position = Vector2(-3, 2)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_tjf0d")
 format = 2
-layer_0/tile_data = PackedInt32Array(196605, 131073, 0, 196606, 131073, 0, 196607, 131073, 0, 131072, 131073, 0, 131073, 131073, 0, 131074, 131073, 0, 131075, 131073, 0, 131076, 131073, 0, 131077, 131073, 0, 131078, 131073, 0, 131079, 131073, 0, 131080, 131073, 0, 131081, 131073, 0, 131082, 131073, 0, 131083, 131073, 0, 131084, 131073, 0, 131085, 131073, 0, 131086, 131073, 0, 131087, 131073, 0, 131088, 131073, 0, 131089, 131073, 0, 131090, 131073, 0, 131091, 131073, 0, 131092, 131073, 0, 131093, 131073, 0, 131094, 131073, 0, 131095, 131073, 0, 131096, 131073, 0, 131097, 131073, 0, 131098, 131073, 0, 131099, 131073, 0, 131100, 131073, 0, 196601, 131073, 0, 196602, 131073, 0, 196603, 131073, 0, 196604, 131073, 0, 131105, 131073, 0, 131104, 131073, 0, 131103, 131073, 0, 131102, 131073, 0, 131101, 131073, 0)
+layer_0/tile_data = PackedInt32Array(196605, 131073, 0, 196606, 131073, 0, 196607, 131073, 0, 131072, 131073, 0, 131073, 131073, 0, 131074, 131073, 0, 131075, 131073, 0, 131076, 131073, 0, 131077, 131073, 0, 131078, 131073, 0, 131079, 131073, 0, 131080, 131073, 0, 131081, 131073, 0, 131082, 131073, 0, 131083, 131073, 0, 131084, 131073, 0, 131085, 131073, 0, 131086, 131073, 0, 131087, 131073, 0, 131088, 131073, 0, 131089, 131073, 0, 131090, 131073, 0, 131091, 131073, 0, 131092, 131073, 0, 131093, 131073, 0, 131094, 131073, 0, 131095, 131073, 0, 131096, 131073, 0, 131097, 131073, 0, 131098, 131073, 0, 131099, 131073, 0, 131100, 131073, 0, 196601, 131073, 0, 196602, 131073, 0, 196604, 131073, 0, 131105, 131073, 0, 131104, 131073, 0, 131103, 131073, 0, 131102, 131073, 0, 131101, 131073, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_fboi4")]
+position = Vector2(44, 8)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(44, 8)
 
 [node name="Slime" parent="." instance=ExtResource("3_0b7vo")]
-position = Vector2(151, -9)
+position = Vector2(-94, 22)

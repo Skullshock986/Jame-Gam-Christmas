@@ -17,6 +17,6 @@ func Physics_Update(delta : float):
 	else:
 		enemy.velocity.x = 0
 	
-	if abs(distance) > 120:
+	if abs(distance) > 60:
 		Transitioned.emit(self, "idle")
 
