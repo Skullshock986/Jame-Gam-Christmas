@@ -115,3 +115,4 @@ func _on_next_level_area_body_exited(body):
 
 func _on_coin_coin_collected():
 	coins += 1
+	$"../CoinHud".update_coin_counter()

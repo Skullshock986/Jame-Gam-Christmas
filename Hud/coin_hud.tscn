@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cst8aawuvx5p7"]
+
+[ext_resource type="Script" path="res://Hud/coin_hud.gd" id="1_1e67h"]
+[ext_resource type="Texture2D" uid="uid://0v618cw1h5ap" path="res://Art/ColdValleys-FullVersion/Sprites/Resources/Coin-16x16.png" id="1_tkm8r"]
+
+[node name="CoinHud" type="CanvasLayer"]
+script = ExtResource("1_1e67h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, 9)
+texture = ExtResource("1_tkm8r")
+hframes = 12
+vframes = 6
+
+[node name="Label" type="Label" parent="."]
+offset_left = 14.0
+offset_top = -4.0
+offset_right = 54.0
+offset_bottom = 19.0
+text = ": 0"
