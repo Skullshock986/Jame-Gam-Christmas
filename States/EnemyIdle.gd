@@ -8,6 +8,7 @@ var player : CharacterBody2D
 var move_direction : float
 var wander_time : float
 var idle_time : float
+var flip_time : float = 0
 
 func randomise_wander():
 	move_direction = (randi() % 2) * 2 - 1
@@ -26,6 +27,7 @@ func Update(delta : float):
 			idle_time -= delta
 		else:
 			randomise_wander()
+	flip_time -= delta
 			
 
 func Physics_Update(delta : float):
@@ -38,3 +40,9 @@ func Physics_Update(delta : float):
 	
 	if abs(distance) < 70:
 		Transitioned.emit(self, "follow")
+
+func Flip_Direction():
+	if flip_time <= 0:
+		move_direction = -move_direction
+		flip_time = 1
+		

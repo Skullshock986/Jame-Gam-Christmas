@@ -147,3 +147,10 @@ enemy = NodePath("../..")
 [node name="Follow" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("5_v4alq")
 enemy = NodePath("../..")
+
+[node name="Direction" type="Node2D" parent="."]
+
+[node name="FloorCheck" type="RayCast2D" parent="Direction"]
+position = Vector2(6, -6)
+exclude_parent = false
+target_position = Vector2(0, 17)
