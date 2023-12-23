@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cdotlqvwrlh1x"]
+
+[node name="PresentsCounter" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = -7.37387
+offset_top = 3.73064
+offset_right = 32.6261
+offset_bottom = 26.7306
+text = "YOU HAB 2 PRESENTS"
