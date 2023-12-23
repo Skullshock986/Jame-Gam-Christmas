@@ -18,6 +18,8 @@ var near_door = false
 @onready var near_next = false
 var current_level : int = 1
 
+var coins : int = 0
+
 func _ready():
 	update_animation_parameters(starting_direction)
 
@@ -109,3 +111,7 @@ func _on_next_level_area_body_entered(body):
 
 func _on_next_level_area_body_exited(body):
 	near_next = false
+
+
+func _on_coin_coin_collected():
+	coins += 1

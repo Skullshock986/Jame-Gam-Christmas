@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5rltqpx1v6s3"]
+
+[ext_resource type="Script" path="res://coin.gd" id="1_yijxi"]
+[ext_resource type="Texture2D" uid="uid://0v618cw1h5ap" path="res://Art/ColdValleys-FullVersion/Sprites/Resources/Coin-16x16.png" id="2_kkpfn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bbkin"]
+radius = 6.0
+
+[sub_resource type="Animation" id="Animation_v3ndf"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(4, 1), Vector2i(5, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3amp2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4ohum"]
+resource_name = "collected"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 5), Vector2i(1, 5), Vector2i(2, 5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nvhiw"]
+_data = {
+"RESET": SubResource("Animation_3amp2"),
+"collected": SubResource("Animation_4ohum"),
+"idle": SubResource("Animation_v3ndf")
+}
+
+[node name="Coin" type="Area2D"]
+script = ExtResource("1_yijxi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_kkpfn")
+hframes = 12
+vframes = 6
+frame = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bbkin")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nvhiw")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

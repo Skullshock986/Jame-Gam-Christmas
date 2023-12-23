@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dghsxabiql52a"]
+[gd_scene load_steps=25 format=3 uid="uid://dghsxabiql52a"]
 
 [ext_resource type="Script" path="res://Scenes/level_1.gd" id="1_18dyr"]
 [ext_resource type="PackedScene" uid="uid://ci4ab8xnw1dxt" path="res://Players/santa.tscn" id="1_sh6bb"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cn7v8q4po6c3v" path="res://Art/ColdValleys-FullVersion/Sprites/World/ParallaxBackground/FadedParallaxBackground/FadedFrontMountains-560x500.png" id="6_rgqvf"]
 [ext_resource type="Texture2D" uid="uid://bj00tw88kdjos" path="res://Art/ColdValleys-FullVersion/Sprites/World/ParallaxBackground/FadedParallaxBackground/FadedHills&Trees-560x500.png" id="7_5nxih"]
 [ext_resource type="Texture2D" uid="uid://ckd0mtou31vbc" path="res://Art/winter free/global.png" id="8_1m86d"]
+[ext_resource type="PackedScene" uid="uid://c5rltqpx1v6s3" path="res://Objects/coin.tscn" id="12_eq28y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ygi8p"]
 texture = ExtResource("5_5c8w1")
@@ -976,8 +977,12 @@ shape = SubResource("RectangleShape2D_snnbd")
 
 [node name="NextLevelArea" type="Area2D" parent="."]
 
+[node name="Coin" parent="." instance=ExtResource("12_eq28y")]
+position = Vector2(120, -8)
+
 [connection signal="body_entered" from="Area2D" to="Player" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="ReturnHomeArea" to="Player" method="_on_return_home_area_body_entered"]
 [connection signal="body_exited" from="ReturnHomeArea" to="Player" method="_on_return_home_area_body_exited"]
 [connection signal="body_entered" from="NextLevelArea" to="Player" method="_on_next_level_area_body_entered"]
 [connection signal="body_exited" from="NextLevelArea" to="Player" method="_on_next_level_area_body_exited"]
+[connection signal="coin_collected" from="Coin" to="Player" method="_on_coin_coin_collected"]
