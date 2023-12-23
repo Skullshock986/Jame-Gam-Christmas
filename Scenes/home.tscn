@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://ci4ab8xnw1dxt" path="res://Players/santa.tscn" id="1_8veq4"]
 [ext_resource type="Script" path="res://Scenes/home.gd" id="1_qftws"]
 [ext_resource type="Texture2D" uid="uid://3xfd6uqps7lt" path="res://Art/ColdValleys-FullVersion/Sprites/World/Ground-24x24.png" id="2_eihoc"]
-[ext_resource type="Texture2D" uid="uid://0xnybhqcyjpn" path="res://Art/Cottage_Tileset/Cottage_Tileset.png" id="3_1uneb"]
-[ext_resource type="PackedScene" uid="uid://dxkvqw5bm3iv1" path="res://Objects/overlay.tscn" id="3_g3db5"]
+[ext_resource type="Texture2D" uid="uid://jdc2snbaik2t" path="res://Art/Cottage_Tileset/Cottage_Tileset.png" id="3_1uneb"]
+[ext_resource type="PackedScene" path="res://Objects/overlay.tscn" id="3_g3db5"]
 [ext_resource type="PackedScene" uid="uid://dvyeihqs3dbil" path="res://Objects/anvil.tscn" id="4_7207f"]
 [ext_resource type="PackedScene" uid="uid://dtpsickw6vdms" path="res://Backgrounds/faded_background.tscn" id="5_f2yvc"]
 

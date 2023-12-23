@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dvyeihqs3dbil"]
 
-[ext_resource type="Texture2D" uid="uid://cnawbifhobwf3" path="res://Art/anvil.png" id="1_icjom"]
+[ext_resource type="Texture2D" uid="uid://dqplc2gjf1c7j" path="res://Art/anvil.png" id="1_icjom"]
 
 [node name="Anvil" type="StaticBody2D"]
 
