@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cn7v8q4po6c3v" path="res://Art/ColdValleys-FullVersion/Sprites/World/ParallaxBackground/FadedParallaxBackground/FadedFrontMountains-560x500.png" id="6_rgqvf"]
 [ext_resource type="Texture2D" uid="uid://bj00tw88kdjos" path="res://Art/ColdValleys-FullVersion/Sprites/World/ParallaxBackground/FadedParallaxBackground/FadedHills_Trees-560x500.png" id="7_5nxih"]
 [ext_resource type="Texture2D" uid="uid://ckd0mtou31vbc" path="res://Art/winter free/global.png" id="8_1m86d"]
-[ext_resource type="PackedScene" uid="uid://c5rltqpx1v6s3" path="res://Objects/coin.tscn" id="12_eq28y"]
+[ext_resource type="PackedScene" path="res://Objects/coin.tscn" id="12_eq28y"]
 [ext_resource type="PackedScene" uid="uid://cst8aawuvx5p7" path="res://Hud/coin_hud.tscn" id="13_oyjrg"]
 [ext_resource type="PackedScene" uid="uid://c43e7ygrp170q" path="res://Enemies/slime.tscn" id="14_xhid8"]
 
