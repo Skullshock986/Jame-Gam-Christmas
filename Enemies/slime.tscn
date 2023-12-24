@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c43e7ygrp170q"]
+[gd_scene load_steps=15 format=3 uid="uid://c43e7ygrp170q"]
 
 [ext_resource type="Texture2D" uid="uid://r0igtuh66q6j" path="res://Art/ColdValleys-FullVersion/Sprites/Characters/Enemies/Slimes-32x32.png" id="1_ewkxu"]
 [ext_resource type="Script" path="res://Enemies/slime.gd" id="1_wksmf"]
@@ -118,6 +118,9 @@ _data = {
 "walk": SubResource("Animation_o66pl")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_che75"]
+radius = 13.0
+
 [node name="Slime" type="CharacterBody2D"]
 script = ExtResource("1_wksmf")
 
@@ -155,3 +158,16 @@ target_position = Vector2(0, 27)
 [node name="RayCast2D2" type="RayCast2D" parent="."]
 position = Vector2(-8, -5)
 target_position = Vector2(0, 27)
+
+[node name="Enemy_hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_hitbox"]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_che75")
+
+[node name="take_damage_cooldown" type="Timer" parent="."]
+wait_time = 0.25
+
+[connection signal="body_entered" from="Enemy_hitbox" to="." method="_on_enemy_hitbox_body_entered"]
+[connection signal="body_exited" from="Enemy_hitbox" to="." method="_on_enemy_hitbox_body_exited"]
+[connection signal="timeout" from="take_damage_cooldown" to="." method="_on_take_damage_cooldown_timeout"]

@@ -24,6 +24,9 @@ func _ready():
 	update_animation_parameters(starting_direction)
 
 func _physics_process(delta):
+	attack()
+	enemy_attack()
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -116,3 +119,54 @@ func _on_next_level_area_body_exited(body):
 func _on_coin_coin_collected():
 	coins += 1
 	$"../CoinHud".update_coin_counter()
+
+
+#combat stuff
+var enemy_in_attack_range = false
+var enemy_attack_cooldown = true
+var health = 100
+var player_alive = true
+var attack_ip = false
+
+func attack():
+	if Input.is_action_just_pressed("attack"):
+		global.player_attacking = true
+		attack_ip = true
+		$attack_cooldown.start()
+
+
+func player():
+	pass
+	
+var timer_active = false
+
+func _on_player_hitbox_body_entered(body):
+	
+	if body.has_method("enemy"):
+		$Damage_cooldown.start();
+		enemy_in_attack_range = true
+
+
+func _on_player_hitbox_body_exited(body):
+	if body.has_method("enemy"):
+		enemy_in_attack_range = false
+		
+func enemy_attack():
+	if enemy_in_attack_range and enemy_attack_cooldown == false:
+		health -= 20
+		enemy_attack_cooldown = true
+		$Damage_cooldown.start()
+		timer_active = true
+		print("player: ", health)
+
+
+func _on_damage_cooldown_timeout():
+	timer_active = false
+	enemy_attack_cooldown = false
+	pass # Replace with function body.
+
+
+func _on_attack_cooldown_timeout():
+	$attack_cooldown.stop()
+	global.player_attacking = false
+	attack_ip = false #why tf is this even a different variable

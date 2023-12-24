@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dghsxabiql52a"]
+[gd_scene load_steps=27 format=3 uid="uid://dghsxabiql52a"]
 
 [ext_resource type="Script" path="res://Scenes/level_1.gd" id="1_18dyr"]
 [ext_resource type="PackedScene" uid="uid://ci4ab8xnw1dxt" path="res://Players/santa.tscn" id="1_sh6bb"]
@@ -9,10 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://b0wfeg5j1y6w4" path="res://Art/Outdoor.png" id="5_5c8w1"]
 [ext_resource type="Texture2D" uid="uid://2ytxg06aake6" path="res://Art/ColdValleys-FullVersion/Sprites/World/ParallaxBackground/FadedParallaxBackground/FadedBackwardMountains-560x500.png" id="5_qglqj"]
 [ext_resource type="Texture2D" uid="uid://cn7v8q4po6c3v" path="res://Art/ColdValleys-FullVersion/Sprites/World/ParallaxBackground/FadedParallaxBackground/FadedFrontMountains-560x500.png" id="6_rgqvf"]
-[ext_resource type="Texture2D" uid="uid://bj00tw88kdjos" path="res://Art/ColdValleys-FullVersion/Sprites/World/ParallaxBackground/FadedParallaxBackground/FadedHills&Trees-560x500.png" id="7_5nxih"]
+[ext_resource type="Texture2D" uid="uid://bj00tw88kdjos" path="res://Art/ColdValleys-FullVersion/Sprites/World/ParallaxBackground/FadedParallaxBackground/FadedHills_Trees-560x500.png" id="7_5nxih"]
 [ext_resource type="Texture2D" uid="uid://ckd0mtou31vbc" path="res://Art/winter free/global.png" id="8_1m86d"]
 [ext_resource type="PackedScene" uid="uid://c5rltqpx1v6s3" path="res://Objects/coin.tscn" id="12_eq28y"]
 [ext_resource type="PackedScene" uid="uid://cst8aawuvx5p7" path="res://Hud/coin_hud.tscn" id="13_oyjrg"]
+[ext_resource type="PackedScene" uid="uid://c43e7ygrp170q" path="res://Enemies/slime.tscn" id="14_xhid8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ygi8p"]
 texture = ExtResource("5_5c8w1")
@@ -1113,6 +1114,11 @@ position = Vector2(2096, -216)
 
 [node name="CoinHud" parent="." instance=ExtResource("13_oyjrg")]
 
+[node name="Slime" parent="." instance=ExtResource("14_xhid8")]
+position = Vector2(156, 15)
+
+[node name="take_damage_cooldown" type="Timer" parent="."]
+
 [connection signal="body_entered" from="Area2D" to="Player" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="ReturnHomeArea" to="Player" method="_on_return_home_area_body_entered"]
 [connection signal="body_exited" from="ReturnHomeArea" to="Player" method="_on_return_home_area_body_exited"]
@@ -1162,3 +1168,4 @@ position = Vector2(2096, -216)
 [connection signal="coin_collected" from="Coins/Coin43" to="Player" method="_on_coin_coin_collected"]
 [connection signal="coin_collected" from="Coins/Coin44" to="Player" method="_on_coin_coin_collected"]
 [connection signal="coin_collected" from="Coins/Coin25" to="Player" method="_on_coin_coin_collected"]
+[connection signal="timeout" from="take_damage_cooldown" to="Slime" method="_on_take_damage_cooldown_timeout"]

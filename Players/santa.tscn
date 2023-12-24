@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://ci4ab8xnw1dxt"]
+[gd_scene load_steps=45 format=3 uid="uid://ci4ab8xnw1dxt"]
 
 [ext_resource type="Script" path="res://Players/player.gd" id="1_66dkk"]
 [ext_resource type="Texture2D" uid="uid://2lysimcut03x" path="res://Art/ColdValleys-FullVersion/Sprites/Characters/Players/Player-32x32.png" id="1_m5g30"]
@@ -440,6 +440,8 @@ states/Walk/position = Vector2(465, 109)
 transitions = ["Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_wiygx"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_eaj42"), "Idle", "Rising", SubResource("AnimationNodeStateMachineTransition_sh871"), "Walk", "Rising", SubResource("AnimationNodeStateMachineTransition_0l067"), "Rising", "Falling", SubResource("AnimationNodeStateMachineTransition_4l4ty"), "Falling", "Idle", SubResource("AnimationNodeStateMachineTransition_8v5w5"), "Falling", "Walk", SubResource("AnimationNodeStateMachineTransition_dgjs5"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_377ee"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_bc3cw"), "Walk", "Attack", SubResource("AnimationNodeStateMachineTransition_t2skn"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_xdmef"), "Attack", "Walk", SubResource("AnimationNodeStateMachineTransition_fow6g")]
 graph_offset = Vector2(66.75, 147.345)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_72rmo"]
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_66dkk")
 starting_direction = -1
@@ -471,3 +473,18 @@ parameters/Falling/blend_position = 0
 parameters/Idle/blend_position = 0.00112355
 parameters/Rising/blend_position = 0
 parameters/Walk/blend_position = 0
+
+[node name="Damage_cooldown" type="Timer" parent="."]
+
+[node name="attack_cooldown" type="Timer" parent="."]
+wait_time = 0.25
+
+[node name="player_hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
+shape = SubResource("CircleShape2D_72rmo")
+
+[connection signal="timeout" from="Damage_cooldown" to="." method="_on_damage_cooldown_timeout"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
+[connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
